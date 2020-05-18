@@ -1,1 +1,15 @@
+NodeJs - Javascript on the Server, a runtime javascript library uses v8 engine developed by google using c++ which compiles vanilla javascript into machine code. 
+First app in node js
+console.log('Hello world, from Node Js');
+node file_name.js
+
+second App in node js
+
+Create a file with written content in it
+const fs = require('fs);
+fs.writeFileSync("hello.txt", "This is from hello.txt");
+
+
+Server - database, authentication, business logic, input validation
+NodeJs  - creates server and listes to incomming requests, handles requests, input validation and connects to database, return responses json , html , css, html
 

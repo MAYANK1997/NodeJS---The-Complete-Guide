@@ -1,1 +1,14 @@
+Core Modules in NodeJs
+http, https, os, fs, path etc
+
+
+const http = require('https') // to import files and core modules we use require keyword
+const server = http.createServer((req,res) => {
+
+console.log(req);
+
+});
+
+
+server.listen(3000); // port number // listen method runs the execution continuously till event is exited or interrupted
 

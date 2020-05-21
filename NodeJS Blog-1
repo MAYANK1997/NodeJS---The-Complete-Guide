@@ -13,3 +13,7 @@ fs.writeFileSync("hello.txt", "This is from hello.txt");
 Server - database, authentication, business logic, input validation
 NodeJs  - creates server and listes to incomming requests, handles requests, input validation and connects to database, return responses json , html , css, html
 
+How web works?
+
+Client/browser->enters domain name or page address->domain lookup after adress resolution->sends request to the server hosts at an particular ip address -> server sends response with appropriate files like html css and js(server can also be used for connecting the database server, user validation. 
+

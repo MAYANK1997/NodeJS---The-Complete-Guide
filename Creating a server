@@ -12,3 +12,68 @@ console.log(req);
 
 server.listen(3000); // port number // listen method runs the execution continuously till event is exited or interrupted
 
+Important components in Request Object
+
+req.url ,req.method, req.headers // headers include all information about cache contro keep alive .
+
+Response object 
+
+res.setHeader('Content-type', 'text/html');
+res.write("<html>");
+res.write("<head> <title> My first Page </title> </head>");
+res.write("</html>");
+res.end();
+
+HTTP Headers
+
+HTTP headers let the client and the server pass additional information with an HTTP request or response.
+
+
+url checking
+
+const server = http.createServer((req,res) => {
+const url = req.url;
+if(url==='/'){
+
+
+res.write();
+
+
+}
+method checking
+GET/POST
+
+
+const method = req.method
+if(url==='/message && method==='POST')
+{
+   fs.writeFileSync('message.txt', 'Dummy');
+   res.statusCode =302;
+   res.setHeader('Location', '/'); // logic for redirection
+   return res.end();
+}
+
+
+Parsing Request bodies
+
+const body = [];
+
+req.on('data', (chunk) => {
+body.push(chunk);
+});
+
+req.on('end' ()=>{
+const parsedBody = Buffer.concat(body).toString();
+}
+
+
+How to achoeve modularity in nodejs
+
+using module.exports function we can export various functions, object sanything fromdifferent files to the source file using require keyword .
+
+Make routes.js separately and incude in the app.js file using const route = require('./routes.js');
+const server = http.createServer(routes); //routes is a function exported from routes.js
+
+
+
+

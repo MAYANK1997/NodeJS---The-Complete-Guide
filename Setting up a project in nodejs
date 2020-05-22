@@ -13,12 +13,12 @@ we can define our own scripts in scripts property of json file
   three ways to install the package are:
   
   globally to the machine 
-  npm install package_name --g
+  npm install -g package_name
   
   into the project with only development phase
   npm install package_name --save-dev
   
   into the production server
-   npm install package_name --save
+   npm install --save package_name 
   
   

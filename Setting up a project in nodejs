@@ -1,0 +1,24 @@
+Start a node project with // npm init
+package.json file is the core configuration file
+we can define our own scripts in scripts property of json file
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  
+  npm start to run the server
+  
+  Now to continuosly run the server with changes pushed to it we have to install the external packages from the npm repository. 
+  One of the package is nodemon
+  three ways to install the package are:
+  
+  globally to the machine 
+  npm install package_name --g
+  
+  into the project with only development phase
+  npm install package_name --save-dev
+  
+  into the production server
+   npm install package_name --save
+  
+  

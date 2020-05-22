@@ -1,0 +1,24 @@
+Installing Express framework in the Node Project
+npm install --save express //will be core component of the project
+
+const express = require('express');
+const app = express();
+
+
+// Express js is all about using middlewares
+
+so we use a .use function 
+
+app.use((req,res,next)=>{ // this function takes three parameters request, response and a function next which takes result from one middle to the next
+console.log("Hello");
+next();
+});
+
+
+app.use((req,res,next)=>{ 
+console.log("Hello_2");
+next();
+});
+const server = http.createServer(app);
+server.listen(3000);
+

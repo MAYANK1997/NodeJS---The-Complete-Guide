@@ -22,3 +22,127 @@ res.send(Hello);
 
 app.listen(3000);
 
+
+// Redirecting to different Paths
+
+app.use('/', (req,res,next)=>{
+console.log("Hi from homepage");
+});
+
+app.use('/users', (req,res,next)=>{
+console.log("Hi from Users page");
+});
+
+// Parsing the form data from one page to another using body-parser package
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.urlencoded({extended:false}));
+
+
+
+app.use('/add_product', (req, res, next) =>{
+
+res.send('<form action="/product" method ="POST"> <input type="text" name="product"> <button type="submit">Submit</button></input></form>');
+
+});
+
+
+app.use('/product', (req, res, next) =>{
+
+   console.log(req.body);
+   res.redirect('/');
+    
+});
+    
+
+app.use('/', (req, res, next) =>{
+
+   res.send('From Express App');
+     
+ });
+
+app.listen(3000);
+
+
+// Increasing the modularity 
+
+create a routes folder
+create two files admin.js and shop.js
+admin.js will include all the routes only accessible to the admin and shop.js will include all routes visible accessible to the user.
+
+in admin.js
+
+const express = require('express');
+
+
+const routes = express.Router();
+
+
+
+routes.get('/add_product', (req, res, next) =>{
+
+    res.send('<form action="/product" method ="POST"> <input type="text" name="product"> <button type="submit">Submit</button></input></form>');
+    
+    });
+    
+    
+routes.post('/product', (req, res, next) =>{
+    
+       console.log(req.body);
+       res.redirect('/');
+        
+ });
+ 
+ 
+ in shop.js
+ const express = require('express');
+
+
+const routes = express.Router();
+
+
+
+routes.get('/', (req, res, next) =>{
+
+    res.send('From Express App');
+      
+
+});
+
+
+module.exports = routes;
+
+
+
+// in index.js
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+const app = express();
+
+app.use(bodyParser.urlencoded({extended:false}));
+
+
+app.use(adminRoutes);
+app.use(shopRoutes);
+
+
+
+
+    
+
+
+
+app.listen(3000);
+ 
+ 
+ 
+
+
+

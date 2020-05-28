@@ -1,0 +1,13 @@
+Structuring Code
+
+
+What is MVC?
+
+Separation of Concerns
+
+Models: Represent data in your code, Work with your data(save, fetch)
+
+View: What the users see, decoupled from your application code
+
+Controller: Connecting your models into views
+

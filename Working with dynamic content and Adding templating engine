@@ -21,6 +21,7 @@ res.status(404).render('404', {pagetitle: 'page not found'});
 
 });
 
+index.js
 
 <%= pagetitle  %>
 <% Vanilla Javascript Code %>
@@ -31,3 +32,97 @@ so to include in main.ejs
 
 <%- include('includes/header.ejs') %>
 
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const rootPage = require('./routes/show');
+const userPage = require('./routes/addUser');
+
+const app = express();
+app.use(bodyParser.urlencoded({extended:false}));
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+app.use(userPage);
+app.use(rootPage);
+
+
+
+app.use((req,res,next)=>{
+console.log("You");
+res.status(404).send('404 Page');
+
+});
+
+
+app.listen(3000);
+
+adduser.js
+
+const express = require('express');
+
+const routes = express.Router();
+
+const users = [];
+
+routes.get('/users',(req,res,next)=>{
+    
+res.render('adduser', {users:users});
+
+});
+
+routes.post('/adduser',(req,res,next)=>{
+    console.log(req.body.user);
+    users.push(req.body.user);
+    res.redirect('/');
+    
+});
+    
+
+module.exports = routes;
+
+show.js
+
+const express = require('express');
+
+const routes = express.Router();
+
+
+routes.get('/',(req,res,next)=>{
+    
+res.render('index', {pageTitle:"index"});
+
+});
+
+
+
+module.exports = routes;
+
+adduser.ejs
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<form action="/adduser" method="POST">
+
+<input type="text" name="user" placeholder="Enter your name">
+<input type="submit" placeholder="submit">
+
+</form>
+<% for(let i=0; i<users.length;i++){ %>
+
+
+<p> 
+
+    <%= users[i] %>
+</p>
+<%}%>
+</body>
+</html>

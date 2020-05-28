@@ -23,3 +23,11 @@ res.status(404).render('404', {pagetitle: 'page not found'});
 
 
 <%= pagetitle  %>
+<% Vanilla Javascript Code %>
+<%- Unrendered html%>
+for example in includes we have header.ejs
+
+so to include in main.ejs
+
+<%- include('includes/header.ejs') %>
+
